@@ -9,10 +9,9 @@ function load_nvm() {
         autoload -U add-zsh-hook
         load-nvmrc() {
             if [[ -f .nvmrc && -r .nvmrc ]]; then
-                nvm use
+                nvm use > /dev/null
             elif [[ $(nvm version) != $(nvm version default)  ]]; then
-                echo "Reverting to nvm default version"
-                nvm use default
+                nvm use default > /dev/null
             fi
         }
         add-zsh-hook chpwd load-nvmrc
